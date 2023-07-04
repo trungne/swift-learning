@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BaseFile</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/Template.playgroundpage/main.swift</string>
+	<key>Diffs</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>let sizes = [3, 6, 100]
+
+func checkIsValidSizes(sizes: [Int]) -&gt; Bool {
+    return sizes.count == 3
+}
+
+func checkIsTriangle(sizes: [Int]) -&gt; Bool {    
+    return sizes[0] + sizes[1] &gt; sizes[2] 
+        &amp;&amp; sizes[1] + sizes[2] &gt; sizes[0] 
+        &amp;&amp; sizes[2] + sizes[0] &gt; sizes[1]
+}
+
+func checkIsEquilateralTriangle(sizes: [Int]) -&gt; Bool {
+    return sizes[0] == sizes[1] &amp;&amp; sizes[1] == sizes[2]
+}
+
+func checkIsIsoscelesTriangle(sizes: [Int]) -&gt; Bool {
+    return sizes[0] == sizes[1] || sizes[0] == sizes[2] || sizes[1] == sizes[2]
+}
+
+
+func checkTriangle(sizes: [Int]) {
+    if (!checkIsValidSizes(sizes: sizes)) {
+        print("Invalid sizes argument. Sizes must be an array of integer with length 3")
+        return
+    }
+    
+    if (!checkIsTriangle(sizes: sizes)) {
+        print("Not Triangle")
+        return
+    }
+    
+    if (checkIsEquilateralTriangle(sizes: sizes)){
+        print("Equilateral")
+        return
+    }
+    
+    if (checkIsIsoscelesTriangle(sizes: sizes)) {
+        print("Isosceles")
+        return
+    }
+    
+    print("Scalene")
+}
+
+
+checkTriangle(sizes: sizes)
+checkTriangle(sizes: [6, 6, 9])
+checkTriangle(sizes: [25, 25, 25])
+checkTriangle(sizes: [3, 4, 5])
+</string>
+			<key>ModifiedRange</key>
+			<string>{1, 1189}</string>
+			<key>OriginalContent</key>
+			<string></string>
+			<key>OriginalRange</key>
+			<string>{1, 0}</string>
+		</dict>
+	</array>
+	<key>FormatVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

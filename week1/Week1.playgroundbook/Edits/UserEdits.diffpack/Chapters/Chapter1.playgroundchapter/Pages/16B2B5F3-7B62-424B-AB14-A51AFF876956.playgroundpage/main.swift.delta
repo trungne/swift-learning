@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BaseFile</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/Template.playgroundpage/main.swift</string>
+	<key>Diffs</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>let numbers = [45, 73, 195, 53]
+
+
+func getComputedNumbers(numbers: [Int]) -&gt; [Int] {
+    var computedNumbers: [Int] = []
+    
+    let lastIndex = numbers.count - 1
+    for index in 0..&lt;(numbers.count) {
+        if (index == lastIndex) {
+            computedNumbers.append(numbers[index] * numbers[0])
+            break
+        }
+        
+        computedNumbers.append(numbers[index] * numbers[index + 1])
+    }
+
+    return computedNumbers
+}
+
+func getComputedNumbers2(numbers: [Int]) -&gt; [Int] {
+    let lastIndex = numbers.count - 1
+   
+    return numbers.enumerated().map { (index, number) -&gt; Int in
+        if (index == lastIndex) {
+            return numbers[index] * numbers[0]
+        }
+        
+        return numbers[index] * numbers[index + 1]
+    }
+
+}
+
+let computedNumbers = getComputedNumbers(numbers: numbers)
+let computedNumbers2 = getComputedNumbers2(numbers: numbers)
+print(computedNumbers)
+print(computedNumbers2)
+
+</string>
+			<key>ModifiedRange</key>
+			<string>{1, 930}</string>
+			<key>OriginalContent</key>
+			<string></string>
+			<key>OriginalRange</key>
+			<string>{1, 0}</string>
+		</dict>
+	</array>
+	<key>FormatVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
