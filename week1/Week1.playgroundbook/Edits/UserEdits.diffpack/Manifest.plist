@@ -36,6 +36,8 @@
 		<string>Modified</string>
 		<key>Chapters/Chapter1.playgroundchapter/UserManifest.plist</key>
 		<string>Added</string>
+		<key>UserModules/UserModule.playgroundmodule/Sources/SharedCode.swift</key>
+		<string>Removed</string>
 	</dict>
 	<key>FormatVersion</key>
 	<integer>2</integer>
