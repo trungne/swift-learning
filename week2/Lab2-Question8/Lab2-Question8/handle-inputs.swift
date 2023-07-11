@@ -101,9 +101,9 @@ func handlePickOwnTicketNumbersInput() -> Bool {
     }
 }
 
-func handleNumbersOfTicketInput(numToDraw: Int) -> [Int] {
+func handleNumbersOfTicketInput(numToDraw: Int, min: Int, max: Int) -> [Int] {
     while (true) {
-        print("Enter \(numToDraw) numbers of your ticket, separated by space, from \(MIN_LUCKY_NUMBER) to \(MAX_LUCKY_NUMBER): ")
+        print("Enter \(numToDraw) numbers of your ticket, separated by space, from \(min) to \(max): ")
         
         guard let input = handleInput() else {
             continue
@@ -117,7 +117,7 @@ func handleNumbersOfTicketInput(numToDraw: Int) -> [Int] {
         }
         
         let numbers = inputArr.compactMap { Int($0) }.filter {
-            $0 >= MIN_LUCKY_NUMBER && $0 <= MAX_LUCKY_NUMBER
+            $0 >= min && $0 <= max
         }
         
         guard numbers.count == inputArr.count else {
@@ -126,9 +126,9 @@ func handleNumbersOfTicketInput(numToDraw: Int) -> [Int] {
         }
         
         
-        let validNumbers = numbers.filter({ ($0 >= MIN_LUCKY_NUMBER && $0 <= MAX_LUCKY_NUMBER) })
+        let validNumbers = numbers.filter({ ($0 >= min && $0 <= max) })
         guard validNumbers.count == numToDraw else {
-            print("One or more of the numbers are not between \(MIN_LUCKY_NUMBER) and \(MAX_LUCKY_NUMBER)")
+            print("One or more of the numbers are not between \(min) and \(max)")
             continue
         }
         

@@ -20,8 +20,13 @@ func playGames(
         
         let isPickingOwnTicketNumbers = handlePickOwnTicketNumbersInput()
 
-        let userLuckyNumbers: [Int] = isPickingOwnTicketNumbers ? handleNumbersOfTicketInput(numToDraw: NUMBER_TO_DRAW) : getRandomLuckyNumbers(length: NUMBER_TO_DRAW, min: minNumToDraw, max: maxNumToDraw)
-        let computerGeneratedRandomLuckyNumbers = getRandomLuckyNumbers(length: NUMBER_TO_DRAW)
+        let userLuckyNumbers: [Int] = isPickingOwnTicketNumbers
+        ?
+            handleNumbersOfTicketInput(numToDraw: NUMBER_TO_DRAW, min: minNumToDraw, max: maxNumToDraw)
+        :
+            getRandomLuckyNumbers(length: NUMBER_TO_DRAW, min: minNumToDraw, max: maxNumToDraw)
+        
+        let computerGeneratedRandomLuckyNumbers = getRandomLuckyNumbers(length: NUMBER_TO_DRAW, min: minNumToDraw, max: maxNumToDraw)
 
         print("You have picked the ticket: \(userLuckyNumbers.toString())")
         print("The winning ticket is: \(computerGeneratedRandomLuckyNumbers.toString())")
