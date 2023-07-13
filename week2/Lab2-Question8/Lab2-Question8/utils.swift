@@ -7,8 +7,44 @@
 
 import Foundation
 
+func getTicketCost(game: GameType) -> Int {
+    switch game {
+        case .LOTTERY_649:
+            return LOTTERY_649_TICKET_COST
+        case .VIETLOT:
+            return VIETLOT_TICKET_COST
+    }
+}
 
-func getRandomLuckyNumbers(length: Int, min: Int = MIN_LUCKY_NUMBER, max: Int = MAX_LUCKY_NUMBER) -> [Int] {
+func getMatchPrizeMap(game: GameType) -> Dictionary<Int, Int> {
+    switch game {
+        case .LOTTERY_649:
+            return MATCH_PRIZE_LOTTERY_649_MAP
+        case .VIETLOT:
+            return MATCH_PRIZE_VIETLOT_MAP
+    }
+}
+
+func getMaxNumToDraw(game: GameType) -> Int {
+    switch game {
+    case .LOTTERY_649:
+        return MAX_LOTTERY_649_LUCKY_NUMBER
+    case .VIETLOT:
+        return MAX_VIETLOT_LUCKY_NUMBER
+    }
+}
+
+func getCurreny(game: GameType) -> String {
+    switch game {
+    case .LOTTERY_649:
+        return "$"
+    case .VIETLOT:
+        return "VND"
+    }
+}
+
+
+func getRandomLuckyNumbers(length: Int, min: Int = MIN_LUCKY_NUMBER, max: Int = MAX_LOTTERY_649_LUCKY_NUMBER) -> [Int] {
     var numbers: [Int] = []
     
     for _ in 0..<length {

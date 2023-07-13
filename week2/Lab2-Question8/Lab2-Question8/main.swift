@@ -11,49 +11,37 @@ func main() {
     print("Welcome!")
     var round = 0
     
+    let gameChoice = handleGameChoiceInput()
+    print("")
+    let menuChoice = handleMenuChoiceInpur()
+    print("")
+    
     while(true) {
         let isFirstRound = round == 0
         if (!isFirstRound) {
             print("-----")
         }
         
-        let menuChoice = handleMenuChoiceInpur()
-        print("")
-        let gameChoice = handleGameChoiceInput(menuChoice: menuChoice)
-        print("")
-        switch (menuChoice, gameChoice) {
-            // 649
-            case (MenuChoice.PLAY, GameType.LOTTERY_649):
+        let matchPrizeMap = getMatchPrizeMap(game: gameChoice)
+        let ticketCost = getTicketCost(game: gameChoice)
+        let currency = getCurreny(game: gameChoice)
+        let maxNumToDraw = getMaxNumToDraw(game: gameChoice)
+        
+        switch (menuChoice) {
+            case .ANALYZE:
+                analyzeGames(matchPrizeMap: matchPrizeMap,
+                             ticketCost: ticketCost,
+                             currency: currency,
+                             minNumToDraw: MIN_LUCKY_NUMBER,
+                             maxNumToDraw: maxNumToDraw)
+             case .PLAY:
                 playGames(
-                    matchPrizeMap: MATCH_PRIZE_649_LOTTERY_MAP,
+                    matchPrizeMap: matchPrizeMap,
                     minNumToDraw: MIN_LUCKY_NUMBER,
-                    maxNumToDraw: MAX_LUCKY_NUMBER
+                    maxNumToDraw: maxNumToDraw
                 )
-    
-            case (MenuChoice.ANALYZE, GameType.LOTTERY_649):
-                analyzeGames(
-                    matchPrizeMap: MATCH_PRIZE_649_LOTTERY_MAP,
-                    ticketCost: 4,
-                    currency: "$",
-                    minNumToDraw: MIN_LUCKY_NUMBER,
-                    maxNumToDraw: MAX_LUCKY_NUMBER)
-            
-            // VietLot
-            case (MenuChoice.PLAY, GameType.VIETLOT):
-                playGames(
-                    matchPrizeMap: MATCH_PRIZE_VIETLOT_MAP,
-                    minNumToDraw: MIN_LUCKY_NUMBER,
-                    maxNumToDraw: MAX_VIETLOT_LUCKY_NUMBER)
-            
-            case (MenuChoice.ANALYZE, GameType.VIETLOT):
-                analyzeGames(
-                    matchPrizeMap: MATCH_PRIZE_VIETLOT_MAP,
-                    ticketCost: 10000,
-                    currency: "VND",
-                    minNumToDraw: MIN_LUCKY_NUMBER,
-                    maxNumToDraw: MAX_LUCKY_NUMBER)
-
         }
+        
         
         print("")
         let continueToPlay = handleContinueToPlayInput()

@@ -18,6 +18,7 @@ func handleInput() -> String? {
 
 func handleMenuChoiceInpur() -> MenuChoice {
     while(true) {
+        print("What do you want to do?")
         print("Press 1 to play.")
         print("Press 2 to analyze.")
         
@@ -39,8 +40,9 @@ func handleMenuChoiceInpur() -> MenuChoice {
     }
 }
 
-func handleGameChoiceInput(menuChoice: MenuChoice) -> GameType {
+func handleGameChoiceInput() -> GameType {
     while(true) {
+        print("Choose a game: ")
         print("Press 1 for 649 Lottery.")
         print("Press 2 for Vietlot.")
         
@@ -116,9 +118,7 @@ func handleNumbersOfTicketInput(numToDraw: Int, min: Int, max: Int) -> [Int] {
             continue
         }
         
-        let numbers = inputArr.compactMap { Int($0) }.filter {
-            $0 >= min && $0 <= max
-        }
+        let numbers = inputArr.compactMap { Int($0) }
         
         guard numbers.count == inputArr.count else {
             print("Invalid input detected! Please only enter number")
@@ -126,15 +126,13 @@ func handleNumbersOfTicketInput(numToDraw: Int, min: Int, max: Int) -> [Int] {
         }
         
         
-        let validNumbers = numbers.filter({ ($0 >= min && $0 <= max) })
-        guard validNumbers.count == numToDraw else {
-            print("One or more of the numbers are not between \(min) and \(max)")
+        let invalidNumbers = numbers.filter({ ($0 < min || $0 > max) })
+        guard invalidNumbers.count == 0 else {
+            print("\(invalidNumbers) \(invalidNumbers.count == 1 ? "is" : "are") not between \(min) and \(max)")
             continue
         }
         
-        
-        
-        return validNumbers
+        return numbers
         
     }
 }
